@@ -9,7 +9,7 @@ public class Contact {
 	private String secondaryEmail;
 	private String primaryPhone;
 	private String secondaryPhone;
-	private boolean preference;
+	private String preference;
 	
 	public String getPrimaryEmail() {
 		return primaryEmail;
@@ -35,10 +35,10 @@ public class Contact {
 	public void setSecondaryPhone(String secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
-	public boolean isPreference() {
+	public String getPreference() {
 		return preference;
 	}
-	public void setPreference(boolean preference) {
+	public void setPreference(String preference) {
 		this.preference = preference;
 	}
 }
