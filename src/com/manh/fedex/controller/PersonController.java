@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.manh.sample.Person;
-import com.manh.sample.mongodb.CustomerRepository;
+//import com.manh.sample.mongodb.CustomerRepository;
 
 @RestController
 @RequestMapping("/person")
@@ -20,8 +20,7 @@ public class PersonController {
 	@Autowired
 	private MongoOperations mongoOperation;
 	
-	@Autowired
-	private CustomerRepository customerRepository;
+	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public Person getPerson() {
@@ -49,15 +48,6 @@ public class PersonController {
 		System.out.println(person.getId());
 
 		return person;
-
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/list1")
-	public List<Person> listPerson1() {
-		
-		return customerRepository.findAll();
-		
-		
 
 	}
 
