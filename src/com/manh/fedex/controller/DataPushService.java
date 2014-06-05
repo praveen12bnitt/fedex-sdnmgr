@@ -1,10 +1,15 @@
 package com.manh.fedex.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.manh.fedex.sdn.domain.AppInstance;
 import com.manh.fedex.sdn.domain.Contact;
 import com.manh.fedex.sdn.domain.Customer;
 import com.manh.fedex.sdn.service.CustomerService;
@@ -21,7 +26,7 @@ public class DataPushService {
 		
 		Customer c1 = new Customer();
 		c1.setName("Home Depot");
-		c1.setShortName("hdmp");
+		c1.setShortName("hmdp");
 		c1.setLogo("/logo/homedepot.jpg");
 		
 		
@@ -83,7 +88,68 @@ public class DataPushService {
 		
 		c4.setContact(contact4);
 		
-		customerService.save(c4);
+		customerService.save(c4); 	
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/app/{code}")
+	public void createAppData(@PathVariable String code) {
+		
+		AppInstance app1 = new AppInstance();
+		app1.setHost(code+"-test1."+code+".com");
+		app1.setPort(20000);
+		app1.setName("wm2013");
+		app1.setProduct("WM");
+		app1.setLocation("/apps/scope/wm");
+		
+		AppInstance app2 = new AppInstance();
+		app2.setHost(code+"-test1."+code+".com");
+		app2.setPort(20000);
+		app2.setName("mda2013");
+		app2.setProduct("MDA");
+		app2.setLocation("/apps/scope/mda");
+		
+		AppInstance app3 = new AppInstance();
+		app3.setHost(code+"-test1."+code+".com");
+		app3.setPort(10000);
+		app3.setName("mip2013");
+		app3.setProduct("MIP");
+		app3.setLocation("/apps/scope/mip");
+		
+		AppInstance app4 = new AppInstance();
+		app4.setHost(code+"-prod1."+code+".com");
+		app4.setPort(20000);
+		app4.setName("wm2013");
+		app4.setProduct("WM");
+		app4.setLocation("/apps/scope/wm");
+		
+		AppInstance app5 = new AppInstance();
+		app5.setHost(code+"-prod1."+code+".com");
+		app5.setPort(20000);
+		app5.setName("mda2013");
+		app5.setProduct("MDA");
+		app5.setLocation("/apps/scope/mda");
+		
+		AppInstance app6 = new AppInstance();
+		app6.setHost(code+"-prod1."+code+".com");
+		app6.setPort(10000);
+		app6.setName("mip2013");
+		app6.setProduct("MIP");
+		app6.setLocation("/apps/scope/mip");
+		
+		List<AppInstance> apps = new ArrayList<AppInstance>();
+		
+		apps.add(app1);
+		apps.add(app2);
+		apps.add(app3);
+		apps.add(app4);
+		apps.add(app5);
+		apps.add(app6);
+		
+		Customer customer = customerService.getCustomerByShortName(code);
+		customer.setAppInstances(apps);
+		
+		customerService.save(customer);
 		
 		
 	}
