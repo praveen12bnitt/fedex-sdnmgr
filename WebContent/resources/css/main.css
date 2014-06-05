@@ -1,0 +1,61 @@
+.body {
+	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+	font-size: 13px;
+}
+
+.header {
+    background-color: black;
+}
+
+.customerview .x-panel-header-default {
+    background-color: white;
+    border-color: white;
+}
+
+.app-header-text {
+    color: white;
+    margin: 0px 0px 0px 10px;
+    font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+    font-size: 18px;
+}
+
+.app-logo {
+    background-image: url(../icons/ma-icon.png);
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 25px;
+    top: 10px !important;
+}
+
+.title {
+    color :#157fcc;
+    font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+    font-size: 20px;
+}
+
+.dataview-image {
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+}
+.dataview-text {
+    font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+}
+
+.dataview-multisort-item {
+    padding: 8px;
+    cursor: pointer;
+    margin: 8px;
+    float: left;
+    width: 175px;
+    height: 200px;
+    box-shadow: 2px 2px 2px 2px #cccccc;
+   -webkit-border-radius: 2px;
+   -moz-border-radius: 2px;
+   -ms-border-radius: 2px;
+   -o-border-radius: 2px;
+    border-radius: 2px;
+}

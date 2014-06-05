@@ -1,0 +1,22 @@
+[
+    {
+        name: 'Home Depot',
+        thumb: 'homedepot.jpg',
+        fixpackCount: 0
+    },
+    {
+        name: 'Target',
+        thumb: 'target.jpg',
+        fixpackCount: 0
+    },
+    {
+        name: "Macy's",
+        thumb: 'macy.jpg',
+        fixpackCount: 0
+    },
+    {
+        name: "Men's Wearhouse",
+        thumb: 'mens.jpg',
+        fixpackCount: 0
+    }
+]
