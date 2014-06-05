@@ -127,4 +127,8 @@ public class CustomerService {
 		}
 		return null;
 	}
+	
+	public void save(Customer customer) {
+		mongoOperation.save(customer);
+	}
 }

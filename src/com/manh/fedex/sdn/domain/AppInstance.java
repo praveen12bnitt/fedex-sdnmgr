@@ -13,7 +13,8 @@ public class AppInstance {
 	private String location;
 	private String host;
 	private int port;
-	private String type;
+	private String product;
+	
 	private List<String> appliedSdns;
 	private List<String> pendingSdns;
 	
@@ -47,12 +48,7 @@ public class AppInstance {
 	public void setPort(int port) {
 		this.port = port;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 	public List<String> getAppliedSdns() {
 		return appliedSdns;
 	}
@@ -66,6 +62,12 @@ public class AppInstance {
 		this.pendingSdns = pendingSdns;
 	}
 	
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
 	
 	
 	

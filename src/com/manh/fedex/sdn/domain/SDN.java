@@ -1,5 +1,7 @@
 package com.manh.fedex.sdn.domain;
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +11,7 @@ public class SDN {
 	@Id
 	private String id;
 	private String name;
-	private int binaryId;
+	private Object binaryId;
 	private Date publishDate;
 	private String custId;
 	private String productName;
@@ -26,10 +28,10 @@ public class SDN {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getBinaryId() {
+	public Object getBinaryId() {
 		return binaryId;
 	}
-	public void setBinaryId(int binaryId) {
+	public void setBinaryId(Object binaryId) {
 		this.binaryId = binaryId;
 	}
 	public Date getPublishDate() {
