@@ -9,6 +9,7 @@ public class Customer {
 	@Id
 	private String id;
 	private String name;
+	private String shortName; 	
 	private String logo;
 	private Contact contact;
 	private List<AppInstance> appInstances;
@@ -42,5 +43,11 @@ public class Customer {
 	}
 	public void setAppInstances(List<AppInstance> appInstances) {
 		this.appInstances = appInstances;
+	}
+	public String getShortName() {
+		return shortName;
+	}
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
 	}
 }
