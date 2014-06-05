@@ -26,7 +26,6 @@
     
     <mongo:mongo/>
 	<mongo:db-factory />
-	<mongo:repositories base-package="com.manh.fedex.sdn.repo" /> 
  	<mongo:mapping-converter id="converter" />
  	
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
