@@ -58,5 +58,10 @@ public class SDNController {
 	public List<SDN> listSDNsForCustAppInst(String custId, String appName) {
 		return custServ.listSDNsForCustAppInst(custId, appName);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/getCustomerByShortName")
+	public Customer getCustomerByShortName(String shortName) {
+		return custServ.getCustomerByShortName(shortName);
+	}
 
 }

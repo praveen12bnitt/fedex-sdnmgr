@@ -116,4 +116,15 @@ public class CustomerService {
 		
 		return sdns;
 	}
+
+	public Customer getCustomerByShortName(String shortName) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("shortName").is(shortName));
+		List<Customer> custList =  mongoOperation.find(query, Customer.class);
+		
+		if(custList.size() > 0) {
+			return custList.get(0);
+		}
+		return null;
+	}
 }
