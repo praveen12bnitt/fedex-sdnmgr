@@ -153,4 +153,80 @@ public class DataPushService {
 		
 		
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/appupd/{code}")
+	public void setAppliedSDNs(@PathVariable String code) {
+		
+		List<String> asdns = new ArrayList<String>();
+		asdns.add("fp001");
+		asdns.add("fp002");
+		asdns.add("fp003");
+		asdns.add("fp004");
+		
+		List<String> psdns = new ArrayList<String>();
+		psdns.add("fp005");
+		psdns.add("fp006");
+		psdns.add("fp007");
+		
+		AppInstance app1 = new AppInstance();
+		app1.setHost(code+"-test1."+code+".com");
+		app1.setPort(20000);
+		app1.setName("wm2013");
+		app1.setProduct("WM");
+		app1.setLocation("/apps/scope/wm");
+		app1.setAppliedSdns(asdns);
+		app1.setPendingSdns(psdns);
+		
+		AppInstance app2 = new AppInstance();
+		app2.setHost(code+"-test1."+code+".com");
+		app2.setPort(20000);
+		app2.setName("mda2013");
+		app2.setProduct("MDA");
+		app2.setLocation("/apps/scope/mda");
+		app1.setAppliedSdns(psdns);
+		app1.setPendingSdns(asdns);
+		
+		AppInstance app3 = new AppInstance();
+		app3.setHost(code+"-test1."+code+".com");
+		app3.setPort(10000);
+		app3.setName("mip2013");
+		app3.setProduct("MIP");
+		app3.setLocation("/apps/scope/mip");
+		
+		AppInstance app4 = new AppInstance();
+		app4.setHost(code+"-prod1."+code+".com");
+		app4.setPort(20000);
+		app4.setName("wm2013");
+		app4.setProduct("WM");
+		app4.setLocation("/apps/scope/wm");
+		
+		AppInstance app5 = new AppInstance();
+		app5.setHost(code+"-prod1."+code+".com");
+		app5.setPort(20000);
+		app5.setName("mda2013");
+		app5.setProduct("MDA");
+		app5.setLocation("/apps/scope/mda");
+		
+		AppInstance app6 = new AppInstance();
+		app6.setHost(code+"-prod1."+code+".com");
+		app6.setPort(10000);
+		app6.setName("mip2013");
+		app6.setProduct("MIP");
+		app6.setLocation("/apps/scope/mip");
+		
+		List<AppInstance> apps = new ArrayList<AppInstance>();
+		
+		apps.add(app1);
+		apps.add(app2);
+		apps.add(app3);
+		apps.add(app4);
+		apps.add(app5);
+		apps.add(app6);
+		
+		Customer customer = customerService.getCustomerByShortName(code);
+		customer.setAppInstances(apps);
+		
+		customerService.save(customer);	
+		
+	}
 }
