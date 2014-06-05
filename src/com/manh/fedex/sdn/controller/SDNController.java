@@ -3,6 +3,8 @@ package com.manh.fedex.sdn.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,28 +36,28 @@ public class SDNController {
 		return custServ.listCustomers();
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/listSdnsForCustomer")
-	public List<SDN> listSDNsForCustomer(String custId) {
+	@RequestMapping(method = RequestMethod.GET, value = "/listSdnsForCustomer/{custId}")
+	public List<SDN> listSDNsForCustomer(@PathVariable String custId) {
 		return custServ.listSDNsForCustomer(custId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/listAppInstancesForCust")
-	public List<AppInstance> listAppInstancesForCust(String custId) {
+	@RequestMapping(method = RequestMethod.GET, value = "/listAppInstancesForCust/{custId}")
+	public List<AppInstance> listAppInstancesForCust(@PathVariable String custId) {
 		return custServ.listAppInstancesForCust(custId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/listAppliedAppInstancesForCust")
-	public List<AppInstance> listAppliedAppInstancesForCust(String custId) {
+	@RequestMapping(method = RequestMethod.GET, value = "/listAppliedAppInstancesForCust/{custId}")
+	public List<AppInstance> listAppliedAppInstancesForCust(@PathVariable String custId) {
 		return custServ.listAppliedAppInstancesForCust(custId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/listPendingAppInstancesForCust")
-	public List<AppInstance> listPendingAppInstancesForCust(String custId) {
+	@RequestMapping(method = RequestMethod.GET, value = "/listPendingAppInstancesForCust/{custId}")
+	public List<AppInstance> listPendingAppInstancesForCust(@PathVariable String custId) {
 		return custServ.listPendingAppInstancesForCust(custId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/listSDNsForCustAppInst")
-	public List<SDN> listSDNsForCustAppInst(String custId, String appName) {
+	@RequestMapping(method = RequestMethod.GET, value = "/listSDNsForCustAppInst/{custId}")
+	public List<SDN> listSDNsForCustAppInst(@PathVariable String custId, @Param("appName") String appName) {
 		return custServ.listSDNsForCustAppInst(custId, appName);
 	}
 	
