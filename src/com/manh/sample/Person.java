@@ -1,5 +1,7 @@
 package com.manh.sample;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,15 +11,18 @@ public class Person {
 	@Id
 	private String id;
 	
+	
+	private String firstName;
+	private String lastName;
+	
+	private List<Address> address;
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	private String firstName;
-	private String lastName;
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -30,6 +35,14 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public List<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+	
+	
 	
 	
 	

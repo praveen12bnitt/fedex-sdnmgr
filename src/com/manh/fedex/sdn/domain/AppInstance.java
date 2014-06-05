@@ -65,4 +65,9 @@ public class AppInstance {
 	public void setPendingSdns(List<String> pendingSdns) {
 		this.pendingSdns = pendingSdns;
 	}
+	
+	
+	
+	
+	
 }
