@@ -4,6 +4,7 @@ package com.manh.fedex.sdn.domain;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "sdns")
@@ -15,6 +16,9 @@ public class SDN {
 	private Date publishDate;
 	private String custId;
 	private String productName;
+	
+	@Transient
+	private boolean applied = false;
 	
 	public String getId() {
 		return id;
@@ -49,7 +53,15 @@ public class SDN {
 	public String getProductName() {
 		return productName;
 	}
+	
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+	
+	public boolean isApplied() {
+		return applied;
+	}
+	public void setApplied(boolean applied) {
+		this.applied = applied;
 	}
 }

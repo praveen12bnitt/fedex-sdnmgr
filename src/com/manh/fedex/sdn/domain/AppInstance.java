@@ -1,5 +1,6 @@
 package com.manh.fedex.sdn.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -15,8 +16,8 @@ public class AppInstance {
 	private int port;
 	private String product;
 	
-	private List<String> appliedSdns;
-	private List<String> pendingSdns;
+	private List<String> appliedSdns = new ArrayList<>();
+	private List<String> pendingSdns = new ArrayList<>();
 	
 	public String getId() {
 		return id;
