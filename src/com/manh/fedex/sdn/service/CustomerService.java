@@ -20,7 +20,8 @@ public class CustomerService {
 	@Autowired
 	private MongoOperations mongoOperation;
 	
-	private SDNService sdnService = SDNService.getInstance();
+	@Autowired
+	private SDNService sdnService;
 	
 	public List<Customer> listCustomers() {
 		return mongoOperation.findAll(Customer.class);
@@ -87,32 +88,33 @@ public class CustomerService {
 		return pendingApps;
 	}
 	
-	public List<SDN> listSDNsForCustAppInst(String custId, String appName) {
-		Query query = new Query();
-		List<AppInstance> apps = new ArrayList<AppInstance>();
+	public List<SDN> listSDNsForCustAppInst(String custShortName, String appName) {
+		Query query = new Query(); 		
 		List<SDN> sdns = new ArrayList<SDN>();
+		query.addCriteria(Criteria.where("shortName").is(custShortName));
 		
-		
-		query.addCriteria(Criteria.where("custId").is(custId));
-		List<Customer> custs = mongoOperation.find(query, Customer.class);
-		if(custs.size() > 0) {
-			apps = custs.get(0).getAppInstances();
-		} else {
-			apps = new ArrayList<AppInstance>();
+		Customer custs = mongoOperation.findOne(query, Customer.class);
+		AppInstance app = null;
+		for(AppInstance a : custs.getAppInstances()) {
+			if(a.getName().equals(appName))  {
+				app = a;
+				break;
+			}
 		}
 		
-		for (Iterator<AppInstance> iterator = apps.iterator(); iterator.hasNext();) {
-			AppInstance appInst = (AppInstance) iterator.next();
-			List<String> appliedSdnIds = appInst.getAppliedSdns();
-			List<String> pendingSdnIds = appInst.getPendingSdns();
-			for (String id : appliedSdnIds) {
-				sdns.add(sdnService.getSDN(id));
+		if(app != null) {
+			for (String id : app.getAppliedSdns()) {
+				SDN sdn = sdnService.getSDN(id);
+				sdn.setApplied(true);
+				sdns.add(sdn);
 			}
 			
-			for (String id : pendingSdnIds) {
-				sdns.add(sdnService.getSDN(id));
+			for (String id : app.getPendingSdns()) {
+				SDN sdn = sdnService.getSDN(id);
+				sdns.add(sdn);
 			}
-		}
+		} 		
+		
 		
 		return sdns;
 	}

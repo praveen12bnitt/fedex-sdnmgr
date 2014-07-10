@@ -56,9 +56,9 @@ public class SDNController {
 		return custServ.listPendingAppInstancesForCust(custId);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/listSDNsForCustAppInst/{custId}")
-	public List<SDN> listSDNsForCustAppInst(@PathVariable String custId, @Param("appName") String appName) {
-		return custServ.listSDNsForCustAppInst(custId, appName);
+	@RequestMapping(method = RequestMethod.GET, value = "/listSDNsForCustAppInst/{custShortName}/{appName}")
+	public List<SDN> listSDNsForCustAppInst(@PathVariable String custShortName, @PathVariable String appName) {
+		return custServ.listSDNsForCustAppInst(custShortName, appName);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/getCustomerByShortName/{shortName}")

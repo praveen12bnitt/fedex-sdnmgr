@@ -27,7 +27,7 @@ public class DataPushService {
 		Customer c1 = new Customer();
 		c1.setName("Home Depot");
 		c1.setShortName("hmdp");
-		c1.setLogo("/logo/homedepot.jpg");
+		c1.setLogo("homedepot.jpg");
 		
 		
 		Contact contact1 = new Contact();
@@ -44,7 +44,7 @@ public class DataPushService {
 		Customer c2 = new Customer();
 		c2.setName("Macys");
 		c2.setShortName("macys");
-		c2.setLogo("/logo/macys.jpg"); 	
+		c2.setLogo("macy.jpg"); 	
 		
 		Contact contact2 = new Contact();
 		contact2.setPrimaryEmail("prajan@macys.com");
@@ -61,7 +61,7 @@ public class DataPushService {
 		Customer c3 = new Customer();
 		c3.setName("Target");
 		c3.setShortName("target");
-		c3.setLogo("/logo/target.jpg"); 	
+		c3.setLogo("target.jpg"); 	
 		
 		Contact contact3 = new Contact();
 		contact3.setPrimaryEmail("prajan@target.com");
@@ -77,7 +77,7 @@ public class DataPushService {
 		Customer c4 = new Customer();
 		c4.setName("Mens Warehouse");
 		c4.setShortName("mw");
-		c4.setLogo("/logo/mw.jpg"); 	
+		c4.setLogo("mens.jpg"); 	
 		
 		Contact contact4 = new Contact();
 		contact4.setPrimaryEmail("prajan@mw.com");

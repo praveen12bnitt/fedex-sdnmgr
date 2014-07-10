@@ -17,16 +17,12 @@ public class SDNService {
 	
 	@Autowired
 	private CustomerService customerService;
-	
-	public static SDNService getInstance()
-	{
-		return new SDNService();
-	}
-	
+		
 	public SDN getSDN(String sdnId) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("id").is(sdnId));
-		return mongoOperation.findOne(query, SDN.class);
+		SDN sdn = mongoOperation.findOne(query, SDN.class);
+		return sdn;
 	}
 	
 	public void createSdn(SDN sdn, Customer customer) { 		
