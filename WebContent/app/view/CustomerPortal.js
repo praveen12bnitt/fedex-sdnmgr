@@ -19,14 +19,22 @@ Ext.define('SdnMgr.view.CustomerPortal', {
             xtype: 'dataview',
             margin: 20,
             cls: 'dataview',
-            tpl: [
+            tpl: new Ext.XTemplate(
                 '<tpl for=".">',
                     '<div class="dataview-multisort-item">',
-                        '<img class="dataview-image" src="resources/icons/customer/{logo}" />',
+	                    '<div class="thumb">',
+	                    	'<img class="dataview-image" src="resources/icons/customer/{logo}" />',
+		                     '<span style="font-size:larger;font-weight:bolder;color:red;float:right;">',
+	                    		'<tpl if="pendingCount &gt; 0">',
+	                    			'<p>!</p>',
+	                    		'<tpl else>',
+	                    			'<p></p>',
+	                    		'</tpl>',
+		                '</div>',
                         '<span class="dataview-text">{name}</span>',
                     '</div>',
                 '</tpl>'
-            ],
+            ),
             listeners: {
                 select: function(dataview, record) {
                     me.showInstanceDetail(record);

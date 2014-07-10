@@ -1,4 +1,5 @@
 package com.manh.fedex.sdn.domain;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -13,6 +14,7 @@ public class Customer {
 	private String logo;
 	private Contact contact;
 	private List<AppInstance> appInstances;
+	private boolean pendingCount;
 	
 	public String getId() {
 		return id;
@@ -49,5 +51,21 @@ public class Customer {
 	}
 	public void setShortName(String shortName) {
 		this.shortName = shortName;
+	}
+	public boolean getPendingCount() {
+		this.pendingCount = false;
+		List<AppInstance> appInsts = this.getAppInstances();
+		for (Iterator<AppInstance> iterator = appInsts.iterator(); iterator.hasNext();) {
+			AppInstance appInstance = (AppInstance) iterator.next();
+			
+			if(appInstance.getPendingSdns() != null && appInstance.getPendingSdns().size() > 0) {
+				this.pendingCount = true;
+			}
+		}
+		
+		return this.pendingCount;
+	}
+	public void setPendingCount(boolean pendingCount) {
+		this.pendingCount = pendingCount;
 	}
 }
