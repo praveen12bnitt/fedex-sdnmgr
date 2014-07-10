@@ -6,7 +6,8 @@ Ext.define('SdnMgr.view.CustomerDetail', {
         'Ext.button.Button',
         'Ext.grid.Panel',
         'Ext.grid.column.Action',
-        'Ext.grid.View'
+        'Ext.grid.View',
+        'Ext.form.field.Display'
     ],
     
     xtype: 'customer.detail',
@@ -21,6 +22,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
             items: [
                 {
                     xtype: 'panel',
+                    border: false,
                     region: 'north',
                     height: 80,
                     itemId: 'sidePanel',
@@ -31,17 +33,65 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                     items: [
                         {
                             xtype: 'container',
-                            cls: 'logo-container',
                             itemId: 'logoContainer',
+                            flex: 1,
                             items: [
                                 {
                                     xtype: 'image',
-                                    height: 100,
                                     itemId: 'companyImage',
-                                    width: 100,
-                                    src: 'resources/icons/homedepot.png'
+                                    width: 80,
+                                    height: 80
                                 }
                             ]
+                        }, 
+                        {
+                            xtype: 'container',
+                            flex: 8,
+                            layout: {
+                                type: 'hbox',
+                                align: 'stretch'
+                            },
+                            items: [{
+                                xtype: 'container',
+                                layout: {
+                                    type: 'vbox'
+                                },
+                                items: [
+                                {
+                                    xtype: 'displayfield',
+                                    fieldLabel: 'Primary Contact Name',
+                                    itemId: 'primaryName',
+                                    value: 'Kaveen Jagadeesan',
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
+                                },
+                                {
+                                    xtype: 'displayfield',
+                                    fieldLabel: 'Primary Contact Number',
+                                    itemId: 'primaryPhone',
+                                    labelCls: 'customer-contact-info'
+                                }]
+                            },
+                            {
+                                xtype: 'container',
+                                layout: {
+                                    type: 'vbox'
+                                },
+                                items: [
+                                {
+                                    xtype: 'displayfield',
+                                    fieldLabel: 'Primary Email Address',
+                                    itemId: 'primaryEmail',
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
+                                }, {
+                                    xtype: 'displayfield',
+                                    fieldLabel: 'Preferred Contact Mode',
+                                    itemId: 'preferredContactMode',
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
+                                }]
+                            }]
                         }
                     ]
                 },

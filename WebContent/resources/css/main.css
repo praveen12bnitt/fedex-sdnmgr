@@ -59,3 +59,8 @@
    -o-border-radius: 2px;
     border-radius: 2px;
 }
+
+.customer-contact-info {
+	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+    font-size: 16px;
+}
