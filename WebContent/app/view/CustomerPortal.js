@@ -22,7 +22,7 @@ Ext.define('SdnMgr.view.CustomerPortal', {
             tpl: [
                 '<tpl for=".">',
                     '<div class="dataview-multisort-item">',
-                        '<img class="dataview-image" src="resources/icons/customer/{thumb}" />',
+                        '<img class="dataview-image" src="resources/icons/customer/{logo}" />',
                         '<span class="dataview-text">{name}</span>',
                     '</div>',
                 '</tpl>'
@@ -36,10 +36,11 @@ Ext.define('SdnMgr.view.CustomerPortal', {
             store: Ext.create('Ext.data.Store', {
                 autoLoad: true,
                 sortOnLoad: true,
-                fields: ['name', 'thumb', 'fixpackCount'],
+                fields: ['name', 'shortname', 'logo', 
+                         {name: 'contact', type: 'auto'}],
                 proxy: {
-                    type: 'ajax',
-                    url : 'resources/data/customers.json',
+                    type: 'rest',
+                    url : 'api/sdn/listCustomers',
                     reader: {
                         type: 'json',
                         rootProperty: ''
@@ -52,6 +53,59 @@ Ext.define('SdnMgr.view.CustomerPortal', {
     },
     
     showInstanceDetail: function(record) {
-        this.up('panel#cardPanel').getLayout().setActiveItem('customerDetail');
+    	
+    	var cardPanel = this.up('panel#cardPanel');
+    	cardPanel.getLayout().setActiveItem('customerDetail');
+        
+        //setting the header details
+        var customerDetailCard =  cardPanel.getComponent('customerDetail');
+        var logo = customerDetailCard.down('container image');
+        var src = 'resources/icons/customer/' + record.get('logo');
+        logo.setSrc(src);
+        
+        var primaryEmail = customerDetailCard.down('container displayfield#primaryEmail');
+        var contactEmail = record.data.contact && record.data.contact.primaryEmail;
+        primaryEmail.setValue(contactEmail);
+        
+        var primaryPhone = customerDetailCard.down('container displayfield#primaryPhone');
+        var contactPhone = record.data.contact && record.data.contact.primaryPhone;
+        primaryPhone.setValue(contactPhone);
+        
+        var preferredContactMode = customerDetailCard.down('container displayfield#preferredContactMode');
+        var contactMode = record.data.contact && record.data.contact.preference;
+        preferredContactMode.setValue(contactMode);
+        
+        // load all the instances associated with the customer
+        var instancesGrid = customerDetailCard.down('panel#customerDetailView container gridpanel');
+        var appInstances = record.get('appInstances');
+        var customerInstanceData = [];
+        console.log(record);
+        if(appInstances) {
+        	
+            for(var i in appInstances) {
+            	var inst = appInstances[i];
+            	var type = 'application';
+            	if(inst.product == 'MDA') {
+            		type = 'mda';
+            	} else if (inst.product == 'MIP'){
+            		type = 'mip';
+            	}
+            		
+            	var cd = Ext.create('SdnMgr.model.CustomerInstance', {
+            		hostname: inst.host,
+            		name: inst.name,
+            		release: inst.release,
+            		port: inst.port,
+            		url: inst.location,
+            		type: type,
+            		release: '2013',
+            		applied: inst.appliedSdns && inst.appliedSdns.length,
+            		pending: inst.pendingSdns && inst.pendingSdns.length,
+            		id: inst.id
+            	});
+            	customerInstanceData.push(cd);
+            }
+        }
+        instancesGrid.getStore().loadData(customerInstanceData);        
     }
 });

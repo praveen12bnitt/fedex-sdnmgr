@@ -6,10 +6,13 @@ Ext.define('SdnMgr.view.CustomerDetail', {
         'Ext.button.Button',
         'Ext.grid.Panel',
         'Ext.grid.column.Action',
-        'Ext.grid.View'
+        'Ext.grid.View',
+        'Ext.form.field.Display'
     ],
     
     xtype: 'customer.detail',
+    
+    border: false,
 
     itemId: 'customerDetail',
     layout: 'border',
@@ -23,7 +26,8 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                     xtype: 'panel',
                     region: 'north',
                     height: 80,
-                    itemId: 'sidePanel',
+                    itemId: 'customerDetailHdr',
+                    cls: 'instance-hdr',
                     layout: {
                         type: 'hbox',
                         align: 'stretch'
@@ -31,25 +35,75 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                     items: [
                         {
                             xtype: 'container',
-                            cls: 'logo-container',
                             itemId: 'logoContainer',
+                            flex: 1,
                             items: [
                                 {
                                     xtype: 'image',
-                                    height: 100,
                                     itemId: 'companyImage',
-                                    width: 100,
-                                    src: 'resources/icons/homedepot.png'
+                                    width: 80,
+                                    height: 80
                                 }
                             ]
+                        }, 
+                        {
+                            xtype: 'container',
+                            flex: 8,
+                            padding: 10,
+                            layout: {
+                                type: 'table',
+                                columns: 2,
+                                tableAttrs: {
+                                    style: {
+                                        width: '100%'
+                                    }
+                                },
+                                tdAttrs: {
+                                    style: {
+                                        width: '50%'
+                                    }
+                                }
+                                
+                            },
+                            items: [{
+                                    xtype: 'displayfield',
+                                    fieldLabel: 'Primary Contact Name',
+                                    itemId: 'primaryName',
+                                    labelWidth: 250,
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
+                                },
+                                {
+                                    xtype: 'displayfield',
+                                    labelWidth: 250,
+                                    fieldLabel: 'Primary Contact Number',
+                                    itemId: 'primaryPhone',
+                                    labelCls: 'customer-contact-info'
+                                },
+                                {
+                                    xtype: 'displayfield',
+                                    labelWidth: 250,
+                                    fieldLabel: 'Primary Email Address',
+                                    itemId: 'primaryEmail',
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
+                                }, 
+                                {
+                                    xtype: 'displayfield',
+                                    labelWidth: 250,
+                                    fieldLabel: 'Preferred Contact Mode',
+                                    itemId: 'preferredContactMode',
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
+                            }]
                         }
                     ]
                 },
                 {
                     xtype: 'panel',
                     region: 'center',
-                    itemId: 'customerCard',
-                    layout: 'card',
+                    itemId: 'customerDetailView',
+                    layout: 'fit',
                     items: [{
                     	xtype: 'container',
                     	layout: {
