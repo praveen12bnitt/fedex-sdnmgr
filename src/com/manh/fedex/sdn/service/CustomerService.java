@@ -34,7 +34,7 @@ public class CustomerService {
 	
 	public List<AppInstance> listAppInstancesForCust(String custId) {
 		Query query = new Query();
-		query.addCriteria(Criteria.where("custId").is(custId));
+		query.addCriteria(Criteria.where("id").is(custId));
 		List<Customer> custs = mongoOperation.find(query, Customer.class);
 		if(custs.size() > 0) {
 			return custs.get(0).getAppInstances();
@@ -47,7 +47,7 @@ public class CustomerService {
 		Query query = new Query();
 		List<AppInstance> apps = new ArrayList<AppInstance>();
 		List<AppInstance> appliedApps = new ArrayList<AppInstance>();
-		query.addCriteria(Criteria.where("custId").is(custId));
+		query.addCriteria(Criteria.where("id").is(custId));
 		List<Customer> custs = mongoOperation.find(query, Customer.class);
 		if(custs.size() > 0) {
 			apps = custs.get(0).getAppInstances();
@@ -57,7 +57,7 @@ public class CustomerService {
 		
 		for (Iterator<AppInstance> iterator = apps.iterator(); iterator.hasNext();) {
 			AppInstance appInst = (AppInstance) iterator.next();
-			if(appInst.getAppliedSdns().size() > 0 && appInst.getPendingSdns().size() == 0) {
+			if(appInst.getAppliedSdns() != null && appInst.getAppliedSdns().size() > 0 && appInst.getPendingSdns().size() == 0) {
 				appliedApps.add(appInst);
 			}			
 		}
@@ -69,7 +69,7 @@ public class CustomerService {
 		Query query = new Query();
 		List<AppInstance> apps = new ArrayList<AppInstance>();
 		List<AppInstance> pendingApps = new ArrayList<AppInstance>();
-		query.addCriteria(Criteria.where("custId").is(custId));
+		query.addCriteria(Criteria.where("id").is(custId));
 		List<Customer> custs = mongoOperation.find(query, Customer.class);
 		if(custs.size() > 0) {
 			apps = custs.get(0).getAppInstances();
@@ -79,7 +79,7 @@ public class CustomerService {
 		
 		for (Iterator<AppInstance> iterator = apps.iterator(); iterator.hasNext();) {
 			AppInstance appInst = (AppInstance) iterator.next();
-			if(appInst.getPendingSdns().size() > 0) {
+			if(appInst.getPendingSdns() != null && appInst.getPendingSdns().size() > 0) {
 				pendingApps.add(appInst);
 			}
 		}
