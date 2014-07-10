@@ -64,3 +64,15 @@
 	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
     font-size: 16px;
 }
+.instance-hdr .x-panel-body-default {
+	border-color: #FFFFFF !important;
+}
+
+.filterbutton {
+	background-color: white !important;
+}
+
+.filterbutton .x-btn-inner-default-toolbar-medium {
+	font-size: 16px;
+	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+}

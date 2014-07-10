@@ -11,6 +11,8 @@ Ext.define('SdnMgr.view.CustomerDetail', {
     ],
     
     xtype: 'customer.detail',
+    
+    border: false,
 
     itemId: 'customerDetail',
     layout: 'border',
@@ -22,10 +24,10 @@ Ext.define('SdnMgr.view.CustomerDetail', {
             items: [
                 {
                     xtype: 'panel',
-                    border: false,
                     region: 'north',
                     height: 80,
-                    itemId: 'sidePanel',
+                    itemId: 'customerDetailHdr',
+                    cls: 'instance-hdr',
                     layout: {
                         type: 'hbox',
                         align: 'stretch'
@@ -47,50 +49,52 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                         {
                             xtype: 'container',
                             flex: 8,
+                            padding: 10,
                             layout: {
-                                type: 'hbox',
-                                align: 'stretch'
+                                type: 'table',
+                                columns: 2,
+                                tableAttrs: {
+                                    style: {
+                                        width: '100%'
+                                    }
+                                },
+                                tdAttrs: {
+                                    style: {
+                                        width: '50%'
+                                    }
+                                }
+                                
                             },
                             items: [{
-                                xtype: 'container',
-                                layout: {
-                                    type: 'vbox'
-                                },
-                                items: [
-                                {
                                     xtype: 'displayfield',
                                     fieldLabel: 'Primary Contact Name',
                                     itemId: 'primaryName',
-                                    value: 'Kaveen Jagadeesan',
+                                    labelWidth: 250,
                                     labelCls: 'customer-contact-info',
                                     fieldCls: 'customer-contact-info'
                                 },
                                 {
                                     xtype: 'displayfield',
+                                    labelWidth: 250,
                                     fieldLabel: 'Primary Contact Number',
                                     itemId: 'primaryPhone',
                                     labelCls: 'customer-contact-info'
-                                }]
-                            },
-                            {
-                                xtype: 'container',
-                                layout: {
-                                    type: 'vbox'
                                 },
-                                items: [
                                 {
                                     xtype: 'displayfield',
+                                    labelWidth: 250,
                                     fieldLabel: 'Primary Email Address',
                                     itemId: 'primaryEmail',
                                     labelCls: 'customer-contact-info',
                                     fieldCls: 'customer-contact-info'
-                                }, {
+                                }, 
+                                {
                                     xtype: 'displayfield',
+                                    labelWidth: 250,
                                     fieldLabel: 'Preferred Contact Mode',
                                     itemId: 'preferredContactMode',
                                     labelCls: 'customer-contact-info',
                                     fieldCls: 'customer-contact-info'
-                                }]
                             }]
                         }
                     ]
@@ -98,8 +102,8 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                 {
                     xtype: 'panel',
                     region: 'center',
-                    itemId: 'customerCard',
-                    layout: 'card',
+                    itemId: 'customerDetailView',
+                    layout: 'fit',
                     items: [{
                     	xtype: 'container',
                     	layout: {

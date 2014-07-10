@@ -53,9 +53,12 @@ Ext.define('SdnMgr.view.CustomerPortal', {
     },
     
     showInstanceDetail: function(record) {
-        this.up('panel#cardPanel').getLayout().setActiveItem('customerDetail');
+    	
+    	var cardPanel = this.up('panel#cardPanel');
+    	cardPanel.getLayout().setActiveItem('customerDetail');
         
-        var customerDetailCard =  this.up('panel#cardPanel').getComponent('customerDetail');
+        //setting the header details
+        var customerDetailCard =  cardPanel.getComponent('customerDetail');
         var logo = customerDetailCard.down('container image');
         var src = 'resources/icons/customer/' + record.get('logo');
         logo.setSrc(src);
@@ -72,5 +75,37 @@ Ext.define('SdnMgr.view.CustomerPortal', {
         var contactMode = record.data.contact && record.data.contact.preference;
         preferredContactMode.setValue(contactMode);
         
+        // load all the instances associated with the customer
+        var instancesGrid = customerDetailCard.down('panel#customerDetailView container gridpanel');
+        var appInstances = record.get('appInstances');
+        var customerInstanceData = [];
+        console.log(record);
+        if(appInstances) {
+        	
+            for(var i in appInstances) {
+            	var inst = appInstances[i];
+            	var type = 'application';
+            	if(inst.product == 'MDA') {
+            		type = 'mda';
+            	} else if (inst.product == 'MIP'){
+            		type = 'mip';
+            	}
+            		
+            	var cd = Ext.create('SdnMgr.model.CustomerInstance', {
+            		hostname: inst.host,
+            		name: inst.name,
+            		release: inst.release,
+            		port: inst.port,
+            		url: inst.location,
+            		type: type,
+            		release: '2013',
+            		applied: inst.appliedSdns && inst.appliedSdns.length,
+            		pending: inst.pendingSdns && inst.pendingSdns.length,
+            		id: inst.id
+            	});
+            	customerInstanceData.push(cd);
+            }
+        }
+        instancesGrid.getStore().loadData(customerInstanceData);        
     }
 });

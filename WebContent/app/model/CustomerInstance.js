@@ -7,6 +7,9 @@ Ext.define('SdnMgr.model.CustomerInstance', {
         'name',
         'url',
         'release',
+        'applied',
+        'pending',
+        'hostname',
         {name: 'fixpack', type: 'auto'}
     ]
 });

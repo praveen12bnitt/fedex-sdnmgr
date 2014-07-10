@@ -36,6 +36,7 @@ Ext.define('SdnMgr.view.CustomerAppInstance', {
         cls: 'filterbutton',
         showText: true,
         width: 150,
+        scale: 'medium',
         textAlign: 'left',
 
         listeners: {
@@ -81,7 +82,7 @@ Ext.define('SdnMgr.view.CustomerAppInstance', {
                     '<div class="instance-small">{port}</div>' +
                 '</div>' +
 	            '<div class="sdn-data">' +
-	                '<div class="sdn-applied">Applied {applied}</div>' +
+	                '<div class="sdn-applied">Applied  {applied}</div>' +
 	                '<div class="sdn-pending">Pending {pending}</span></div>' +
 	            '</div>' +
             '</div>' +
