@@ -118,6 +118,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                     xtype: 'tabpanel',
                     cls: 'customer-tab-view',
                     region: 'center',
+                    itemId: 'customerTab',
                     items: [{
 	                    itemId: 'customerDetailView',
 	                    title: 'Customer Details',

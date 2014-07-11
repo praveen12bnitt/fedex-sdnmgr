@@ -59,6 +59,8 @@ Ext.define('SdnMgr.view.CustomerPortal', {
     	
     	var cardPanel = this.up('panel#cardPanel');
     	cardPanel.getLayout().setActiveItem('customerDetail');
+    	var customerTab = cardPanel.down('#customerTab');
+    	customerTab.setActiveItem(0);
         
         //setting the header details
         var customerDetailCard =  cardPanel.getComponent('customerDetail');
