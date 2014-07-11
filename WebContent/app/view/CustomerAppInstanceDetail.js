@@ -53,11 +53,8 @@ Ext.define('SdnMgr.view.CustomerAppInstanceDetail', {
         animate: true,
         shadow: false,
         store: Ext.create('Ext.data.JsonStore', {
-            fields: ['fixpack', 'data' ],
-            data: [
-                { fixpack: 'Applied Fixpacks', data: 8},
-                { fixpack: 'Pending Fixpacks', data: 2},
-            ]
+        	storeId: 'chartData',
+            fields: ['fixpack', 'data' ]
         }),
         insetPadding: 40,
         legend: {
@@ -77,7 +74,7 @@ Ext.define('SdnMgr.view.CustomerAppInstanceDetail', {
             },
             showInLegend: true,
             highlight: {
-                fill: '#000',
+                fill: 'orange',
                 'stroke-width': 1,
                 stroke: '#ccc'
             },

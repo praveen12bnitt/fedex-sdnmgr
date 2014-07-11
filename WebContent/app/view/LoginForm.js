@@ -30,8 +30,6 @@ Ext.define('SdnMgr.view.LoginForm', {
         	text:'Login',
         	handler: function(btn) {
         		var card = btn.up('#cardPanel');
-        		//btn.up('window').hide();
-        		//viewport.down('#customerPortalMain').show();        		
         		card.getLayout().setActiveItem(1);
         	}
         }

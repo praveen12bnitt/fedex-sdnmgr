@@ -76,3 +76,7 @@
 	font-size: 16px;
 	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
 }
+
+.selected-app-row .instance-data {
+    border: 2px solid orange !important;
+}

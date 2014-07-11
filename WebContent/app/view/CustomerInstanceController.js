@@ -44,8 +44,26 @@ Ext.define('SdnMgr.view.CustomerInstanceController', {
     	var url = 'api/sdn/listSDNsForCustAppInst';
     	url = url + "/" + record.get('custId') + "/" + record.get('name');    	
     	store.getProxy().setUrl(url);
-    	store.load();    	
     	
+    	store.load(function(records){
+    		var applied = 0;
+    		var pending = 0;
+    		for(var i in records) {
+    			if(records[i].get('applied'))
+    				applied++;
+    			else
+    				pending++;
+    		}
+    		var chartStore = Ext.getStore('chartData');
+		    var data = [{
+				fixpack : 'Applied Fixpacks',
+				data : applied
+			},{
+				fixpack : 'Pending Fixpacks',
+				data : pending
+			}];
+		    chartStore.loadData(data);
+    	});
     },
 
     onExpandBody: function (rowNode) {   // , record, expandRow, eOpts

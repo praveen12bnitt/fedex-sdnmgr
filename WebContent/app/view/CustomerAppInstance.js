@@ -93,7 +93,8 @@ Ext.define('SdnMgr.view.CustomerAppInstance', {
             itemclick: 'onClick',
             expandbody: 'onExpandBody',
             collapsebody: 'onCollapseBody'
-        }
+        },
+        selectedItemCls : 'selected-app-row'
     },
 
     plugins: [{
