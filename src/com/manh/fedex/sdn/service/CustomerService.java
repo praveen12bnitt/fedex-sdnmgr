@@ -30,27 +30,49 @@ public class CustomerService {
 	public List<SDN> listSDNsForCustomer(String custId) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("custId").is(custId));
-		List<AppInstance> appliedApps = listAppliedAppInstancesForCust(custId);
-		List<AppInstance> pendingApps = listPendingAppInstancesForCust(custId);
-		List<SDN> sdns = new ArrayList<SDN>();		
+		List<AppInstance> appInsts = new ArrayList<AppInstance>();
+		List<SDN> sdns = new ArrayList<SDN>();
+		List<SDN> retSdns = new ArrayList<SDN>();
 		
 		sdns = mongoOperation.find(query, SDN.class);
+		
+		query = new Query();
+		query.addCriteria(Criteria.where("id").is(custId));
+		List<Customer> custs = mongoOperation.find(query, Customer.class);
+		if(custs.size() > 0) {
+			appInsts = custs.get(0).getAppInstances();
+		}
+		
+		
 		
 		for (SDN sdn : sdns) {
 			List<String> appliedAppStrList = new ArrayList<String>();
 			List<String> pendingAppStrList = new ArrayList<String>();
-			for (AppInstance appInst : appliedApps) {
-				appliedAppStrList.add(appInst.getHost() + ":" + appInst.getPort() + " - " + appInst.getName());
+			
+			for (AppInstance appInst : appInsts) {
+				List<String> appliedSDNs = appInst.getAppliedSdns();
+				for (String sdnStr : appliedSDNs) {
+					if(sdnStr.equals(sdn.getId())){
+						appliedAppStrList.add(appInst.getHost() + ":" + appInst.getPort() + " - " + appInst.getName());
+					}
+				}
 			}
 			
-			for (AppInstance appInst : pendingApps) {
-				pendingAppStrList.add(appInst.getHost() + ":" + appInst.getPort() + " - " + appInst.getName());
+			for (AppInstance appInst : appInsts) {
+				List<String> pendingSDNs = appInst.getPendingSdns();
+				for (String sdnStr : pendingSDNs) {
+					if(sdnStr.equals(sdn.getId())){
+						pendingAppStrList.add(appInst.getHost() + ":" + appInst.getPort() + " - " + appInst.getName());
+					}
+				}
 			}
+			
 			sdn.setAppliedApps(appliedAppStrList);
 			sdn.setPendingApps(pendingAppStrList);
+			retSdns.add(sdn);
 		}
 		
-		return sdns;
+		return retSdns;
 	}
 	
 	public List<AppInstance> listAppInstancesForCust(String custId) {
