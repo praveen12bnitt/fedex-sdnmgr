@@ -16,28 +16,33 @@ Ext.define('SdnMgr.view.CustomerAppInstanceDetail', {
     border: false,
     
     bodyPadding: 5,
+    
+    controller: 'customerinstance',
     	
     items: [{
     	xtype: 'gridpanel',
+    	reference: 'sdnList',
+    	store: Ext.create('SdnMgr.store.FixPacks'),
     	flex: 1,
     	columns: [{
     		dataIndex: 'name',
     		text: 'Fix Pack Name',
     		flex: 1
     	}, {
-    		dataIndex: 'applied',
     		text: 'Applied',
     		flex: 1,
-    		align: 'center',
-    		xtype: 'actioncolumn',
-    		getClass: function (record) {
-		    			if(record.get('applied'))
-		    				return 'applied-icon-cls';
-		    			else
-		    				return 'pending-icon-cls';
-		    		}
+    		dataIndex: 'applied',
+    		renderer : function(value) {
+					if (value)
+						return 'Yes';
+					else
+						return 'No';
+				}
     		}, {
     			dataIndex: 'publishDate',
+    			renderer : function(value) {
+					return Ext.Date.format(new Date(value), 'm/d/Y H:i:s');
+				},
     			text: 'Published Date',
     			flex: 1
     		}]

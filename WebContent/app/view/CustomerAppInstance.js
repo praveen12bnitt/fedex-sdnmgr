@@ -53,15 +53,15 @@ Ext.define('SdnMgr.view.CustomerAppInstance', {
             },{
                 text: 'Application',
                 type: 'application',
-                itemId: 'application'
+                itemId: 'application',
             },{
                 text: 'MDA',
                 type: 'mda',
-                itemId: 'mda'
+                itemId: 'mda',
             }, {
                 text: 'MIP',
                 type: 'mip',
-                itemId: 'mip'
+                itemId: 'mip',
             }]
         }
     }],

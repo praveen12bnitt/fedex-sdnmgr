@@ -87,7 +87,6 @@ Ext.define('SdnMgr.view.CustomerPortal', {
         var instancesGrid = customerDetailCard.down('panel#customerDetailView container gridpanel');
         var appInstances = record.get('appInstances');
         var customerInstanceData = [];
-        console.log(record);
         if(appInstances) {
         	
             for(var i in appInstances) {
@@ -109,11 +108,13 @@ Ext.define('SdnMgr.view.CustomerPortal', {
             		release: '2013',
             		applied: inst.appliedSdns && inst.appliedSdns.length,
             		pending: inst.pendingSdns && inst.pendingSdns.length,
-            		id: inst.id
+            		custId: record.get('shortName')
             	});
             	customerInstanceData.push(cd);
             }
         }
-        instancesGrid.getStore().loadData(customerInstanceData);        
+        instancesGrid.getStore().loadData(customerInstanceData);
+        var store = Ext.getStore('FixPacks');
+        store.removeAll();
     }
 });

@@ -67,7 +67,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                             },
                             items: [{
                                     xtype: 'displayfield',
-                                    fieldLabel: 'Primary Contact Name',
+                                    fieldLabel: 'PRIMARY CONTACT NAME',
                                     itemId: 'primaryName',
                                     labelWidth: 250,
                                     labelCls: 'customer-contact-info',
@@ -76,14 +76,15 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                                 {
                                     xtype: 'displayfield',
                                     labelWidth: 250,
-                                    fieldLabel: 'Primary Contact Number',
+                                    fieldLabel: 'PRIMARY CONTACT NUMBER',
                                     itemId: 'primaryPhone',
-                                    labelCls: 'customer-contact-info'
+                                    labelCls: 'customer-contact-info',
+                                    fieldCls: 'customer-contact-info'
                                 },
                                 {
                                     xtype: 'displayfield',
                                     labelWidth: 250,
-                                    fieldLabel: 'Primary Email Address',
+                                    fieldLabel: 'PRIMARY EMAIL ADDRESS',
                                     itemId: 'primaryEmail',
                                     labelCls: 'customer-contact-info',
                                     fieldCls: 'customer-contact-info'
@@ -91,7 +92,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                                 {
                                     xtype: 'displayfield',
                                     labelWidth: 250,
-                                    fieldLabel: 'Preferred Contact Mode',
+                                    fieldLabel: 'PREFERRED CONTACT MODE',
                                     itemId: 'preferredContactMode',
                                     labelCls: 'customer-contact-info',
                                     fieldCls: 'customer-contact-info'
