@@ -11,11 +11,11 @@
 .instance-title {
     color :#157fcc;
     font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
 .instance-small {
-    font-size: 15px;
+    font-size: 14px;
     font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
     color: #157fcc;
 }
@@ -71,14 +71,14 @@
 .sdn-pending {
 	color: red;
 	margin: 20px 0px;
-	font-size: 20px;
+	font-size: 16px;
 	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
 	margin-bottom: 5px;
 }
 
 .sdn-applied {
 	color: green;
-	font-size: 20px;
+	font-size: 16px;
 	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
 }
 

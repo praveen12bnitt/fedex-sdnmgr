@@ -92,3 +92,8 @@
 	background-color: #ececec;
 	font-weight: bold;
 }
+
+.customer-tab-view .x-tab-inner-default {
+	font-size: 16px;
+	font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
+}
