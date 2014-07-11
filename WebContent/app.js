@@ -19,7 +19,8 @@ Ext.application({
         'SdnMgr.view.CustomerPortal',
         'SdnMgr.view.CustomerDetail',
         'SdnMgr.view.CustomerAppInstance',
-        'SdnMgr.view.CustomerAppInstanceDetail'
+        'SdnMgr.view.CustomerAppInstanceDetail',
+        'SdnMgr.view.LoginForm'
     ],
     models: [
         'SdnMgr.model.CustomerInstance'

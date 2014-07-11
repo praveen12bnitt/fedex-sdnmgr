@@ -20,6 +20,18 @@ Ext.define('SdnMgr.view.main.Main', {
         bodyPadding: 10,
         layout: 'card',
         items: [{
+        	xtype: 'panel',
+            autoShow: true,
+            layout: {
+            	type: 'hbox',
+            	align: 'middle',
+            	pack: 'center'
+            },
+            items: {
+        		xtype: 'sdn.login',
+        		itemId: 'loginForm'
+            }
+        }, {
             xtype: 'customer.dataview',
             itemId: 'customerView'
         }, {

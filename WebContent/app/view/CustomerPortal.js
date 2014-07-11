@@ -15,7 +15,7 @@ Ext.define('SdnMgr.view.CustomerPortal', {
     
     initComponent: function() {
         var me = this;
-        me.items = {
+        me.items = [{
             xtype: 'dataview',
             margin: 20,
             cls: 'dataview',
@@ -55,7 +55,7 @@ Ext.define('SdnMgr.view.CustomerPortal', {
                     }
                 }
             })
-        };
+        }];
 
         this.callParent(arguments);
     },
