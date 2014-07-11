@@ -18,7 +18,11 @@ public class SDN {
 	private String custId;
 	private String productName;
 	private String desc;
+	
+	@Transient
 	private List<String> appliedApps;
+	
+	@Transient
 	private List<String> pendingApps;
 	
 	@Transient
@@ -73,5 +77,17 @@ public class SDN {
 	}
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	public List<String> getAppliedApps() {
+		return appliedApps;
+	}
+	public void setAppliedApps(List<String> appliedApps) {
+		this.appliedApps = appliedApps;
+	}
+	public List<String> getPendingApps() {
+		return pendingApps;
+	}
+	public void setPendingApps(List<String> pendingApps) {
+		this.pendingApps = pendingApps;
 	}
 }
