@@ -23,11 +23,9 @@ Ext.define('SdnMgr.view.CustomerPortal', {
                 '<tpl for=".">',
                     '<div class="dataview-multisort-item">',
                     	'<img class="dataview-image" src="resources/icons/customer/{logo}" />',
-	                     '<span style="font-size:16px;font-weight:bold;color:red;float:right;">',
                     		'<tpl if="pendingCount &gt; 0">',
-                    			'<p>!</p>',
+                    			'<img class="dataview-alert-image" src="resources/icons/alert.png" />',
                     		'</tpl>',
-                    	'</span>',
                         '<span class="dataview-text">{name}</span>',
                     '</div>',
                 '</tpl>'
