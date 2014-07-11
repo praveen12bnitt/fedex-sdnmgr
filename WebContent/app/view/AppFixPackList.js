@@ -25,12 +25,12 @@ Ext.define('SdnMgr.view.AppFixPackList',{
 	}],
 	store: Ext.create('SdnMgr.store.AppFixPacks'),
 	columns: [{
-        	  text: 'Product Name',
-        	  dataIndex: 'productName',
-        	  flex: 1
-          }, {
         	  text: 'Fix Pack Name',
         	  dataIndex: 'name',
+        	  flex: 1
+          }, {
+        	  text: 'Product Name',
+        	  dataIndex: 'productName',
         	  flex: 1
           }, {
         	  text: 'Publish Date',
@@ -48,17 +48,21 @@ Ext.define('SdnMgr.view.AppFixPackList',{
               		'<tpl else>',
               		'0',
         	  		'</tpl>'),
-        	  flex: 2
+        	  flex: 3/4
           }, {
         	  text: 'Apps Pending',
         	  dataIndex: 'pendingApps',
-        	  flex: 2,
+        	  flex: 3/4,
         	  xtype: 'templatecolumn',
         	  tpl: new Ext.XTemplate('<tpl if="Ext.isDefined(pendingApps)">',
               			'{pendingApps.length}',
               		'<tpl else>',
                   		'0',
             	  	'</tpl>'),
+          }, {
+        	  text: 'Description',
+        	  dataIndex: 'desc',
+        	  flex: 3
           }
 	]
 });

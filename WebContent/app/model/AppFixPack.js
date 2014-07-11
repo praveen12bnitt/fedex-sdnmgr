@@ -19,6 +19,8 @@ Ext.define('SdnMgr.model.AppFixPack', {
         	name: 'appliedApps'
         }, {
         	name: 'pendingApps'
+        }, {
+        	name: 'desc'
         }
     ]
 });
