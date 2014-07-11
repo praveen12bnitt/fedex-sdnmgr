@@ -21,7 +21,7 @@ Ext.define('SdnMgr.view.Header', {
             xtype: 'label',
             itemId: 'app-header-title',
             cls: 'app-header-text',
-            text: 'SDN Manager',
+            text: 'C.H.I.T.T.I.',
             flex: 1
         }, {
         	xtype: 'button',
