@@ -31,7 +31,7 @@ public class SDNUploadController {
 	private SDNService sdnService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody String handleFileUpload(@RequestParam("name") String name, @RequestParam("customerCode") String customerCode,
+	public @ResponseBody String handleFileUpload(@RequestParam("name") String name, @RequestParam("desc") String desc,  @RequestParam("customerCode") String customerCode,
 			@RequestParam("productName") String productName, @RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
 			try {
@@ -43,7 +43,8 @@ public class SDNUploadController {
 				sdn.setProductName(productName);
 				sdn.setPublishDate(new Date());
 				sdn.setBinaryId(mongofile.getId());
-				sdn.setCustId(customer.getId()); 			
+				sdn.setCustId(customer.getId()); 
+				sdn.setDesc(desc);
 				
 				sdnService.createSdn(sdn, customer);
 						

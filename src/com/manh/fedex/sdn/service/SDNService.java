@@ -34,4 +34,31 @@ public class SDNService {
 		}  		
 		mongoOperation.save(customer); 		
 	}
+	
+	public void markSdnApplied(String custCode, String appName, String sdnName) {
+		Customer customer = customerService.getCustomerByShortName(custCode);
+		
+		Query query = new Query();
+		query.addCriteria(Criteria.where("name").is(sdnName));
+		SDN sdn = mongoOperation.findOne(query, SDN.class);
+		
+		AppInstance selectedAppInstance = null;
+		for(AppInstance app : customer.getAppInstances()) {
+			
+			if(app.getName().equals(appName)) {
+				selectedAppInstance = app;
+				break;
+			} 			
+			
+		}  			
+		if(selectedAppInstance != null) {
+			if(selectedAppInstance.getPendingSdns().contains(sdn.getId())) {
+				selectedAppInstance.getAppliedSdns().add(sdn.getId());
+				selectedAppInstance.getPendingSdns().remove(sdn.getId());
+			}
+		}
+		
+		mongoOperation.save(customer); 	
+		
+	}
 }

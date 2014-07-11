@@ -17,8 +17,9 @@ public class SDN {
 	private Date publishDate;
 	private String custId;
 	private String productName;
-	private List<String> pendingApps;
+	private String desc;
 	private List<String> appliedApps;
+	private List<String> pendingApps;
 	
 	@Transient
 	private boolean applied = false;
@@ -67,17 +68,10 @@ public class SDN {
 	public void setApplied(boolean applied) {
 		this.applied = applied;
 	}
-	public List<String> getPendingApps() {
-		return pendingApps;
+	public String getDesc() {
+		return desc;
 	}
-	public void setPendingApps(List<String> pendingApps) {
-		this.pendingApps = pendingApps;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
-	public List<String> getAppliedApps() {
-		return appliedApps;
-	}
-	public void setAppliedApps(List<String> appliedApps) {
-		this.appliedApps = appliedApps;
-	}
-	
 }
