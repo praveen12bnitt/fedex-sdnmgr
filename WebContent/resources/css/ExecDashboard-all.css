@@ -16,6 +16,7 @@
 }
 .instance-small {
     font-size: 14px;
+    margin: 3px 0px 3px 0px;
     font-family: "Segoe UI Semibold", tahoma, arial, verdana, sans-serif;
     color: #157fcc;
 }
