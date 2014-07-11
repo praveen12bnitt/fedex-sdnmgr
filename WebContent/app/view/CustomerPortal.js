@@ -24,12 +24,11 @@ Ext.define('SdnMgr.view.CustomerPortal', {
                     '<div class="dataview-multisort-item">',
 	                    '<div class="thumb">',
 	                    	'<img class="dataview-image" src="resources/icons/customer/{logo}" />',
-		                     '<span style="font-size:larger;font-weight:bolder;color:red;float:right;">',
+		                     '<span style="font-size:16px;font-weight:bold;color:red;float:right;">',
 	                    		'<tpl if="pendingCount &gt; 0">',
 	                    			'<p>!</p>',
-	                    		'<tpl else>',
-	                    			'<p></p>',
 	                    		'</tpl>',
+	                    	'</span>',
 		                '</div>',
                         '<span class="dataview-text">{name}</span>',
                     '</div>',
@@ -74,6 +73,10 @@ Ext.define('SdnMgr.view.CustomerPortal', {
         var primaryEmail = customerDetailCard.down('container displayfield#primaryEmail');
         var contactEmail = record.data.contact && record.data.contact.primaryEmail;
         primaryEmail.setValue(contactEmail);
+        
+        var primaryName = customerDetailCard.down('container displayfield#primaryName');
+        var name = record.data.contact && record.data.contact.primaryName;
+        primaryName.setValue(name);
         
         var primaryPhone = customerDetailCard.down('container displayfield#primaryPhone');
         var contactPhone = record.data.contact && record.data.contact.primaryPhone;
