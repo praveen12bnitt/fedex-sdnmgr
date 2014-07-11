@@ -63,6 +63,6 @@ public class SDNController {
 	@RequestMapping(method = RequestMethod.GET, value = "/getCustomerByShortName/{shortName}")
 	public Customer getCustomerByShortName(@PathVariable String shortName) {
 		return custServ.getCustomerByShortName(shortName);
-	}	
+	}
 
 }

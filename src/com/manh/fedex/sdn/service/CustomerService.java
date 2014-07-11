@@ -30,7 +30,27 @@ public class CustomerService {
 	public List<SDN> listSDNsForCustomer(String custId) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("custId").is(custId));
-		return mongoOperation.find(query, SDN.class);
+		List<AppInstance> appliedApps = listAppliedAppInstancesForCust(custId);
+		List<AppInstance> pendingApps = listPendingAppInstancesForCust(custId);
+		List<SDN> sdns = new ArrayList<SDN>();		
+		
+		sdns = mongoOperation.find(query, SDN.class);
+		
+		for (SDN sdn : sdns) {
+			List<String> appliedAppStrList = new ArrayList<String>();
+			List<String> pendingAppStrList = new ArrayList<String>();
+			for (AppInstance appInst : appliedApps) {
+				appliedAppStrList.add(appInst.getHost() + ":" + appInst.getPort() + " - " + appInst.getName());
+			}
+			
+			for (AppInstance appInst : pendingApps) {
+				pendingAppStrList.add(appInst.getHost() + ":" + appInst.getPort() + " - " + appInst.getName());
+			}
+			sdn.setAppliedApps(appliedAppStrList);
+			sdn.setPendingApps(pendingAppStrList);
+		}
+		
+		return sdns;
 	}
 	
 	public List<AppInstance> listAppInstancesForCust(String custId) {

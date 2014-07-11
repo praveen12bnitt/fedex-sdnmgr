@@ -2,6 +2,7 @@ package com.manh.fedex.sdn.domain;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -16,6 +17,8 @@ public class SDN {
 	private Date publishDate;
 	private String custId;
 	private String productName;
+	private List<String> pendingApps;
+	private List<String> appliedApps;
 	
 	@Transient
 	private boolean applied = false;
@@ -64,4 +67,17 @@ public class SDN {
 	public void setApplied(boolean applied) {
 		this.applied = applied;
 	}
+	public List<String> getPendingApps() {
+		return pendingApps;
+	}
+	public void setPendingApps(List<String> pendingApps) {
+		this.pendingApps = pendingApps;
+	}
+	public List<String> getAppliedApps() {
+		return appliedApps;
+	}
+	public void setAppliedApps(List<String> appliedApps) {
+		this.appliedApps = appliedApps;
+	}
+	
 }

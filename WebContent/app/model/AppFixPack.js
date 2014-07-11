@@ -15,6 +15,10 @@ Ext.define('SdnMgr.model.AppFixPack', {
             name: 'publishDate'
         }, {
         	name: 'product'
+        }, {
+        	name: 'appliedApps'
+        }, {
+        	name: 'pendingApps'
         }
     ]
 });
