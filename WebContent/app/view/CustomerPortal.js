@@ -44,7 +44,7 @@ Ext.define('SdnMgr.view.CustomerPortal', {
             store: Ext.create('Ext.data.Store', {
                 autoLoad: true,
                 sortOnLoad: true,
-                fields: ['name', 'shortname', 'logo', 
+                fields: ['id','name', 'shortname', 'logo', 
                          {name: 'contact', type: 'auto'}],
                 proxy: {
                     type: 'rest',
@@ -85,6 +85,8 @@ Ext.define('SdnMgr.view.CustomerPortal', {
         
         // load all the instances associated with the customer
         var instancesGrid = customerDetailCard.down('panel#customerDetailView container gridpanel');
+        var appFixPackPanel = customerDetailCard.down('panel[xtype=appfixpacks]');
+        appFixPackPanel.custRecord = record;
         var appInstances = record.get('appInstances');
         var customerInstanceData = [];
         if(appInstances) {

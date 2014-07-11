@@ -7,7 +7,8 @@ Ext.define('SdnMgr.view.CustomerDetail', {
         'Ext.grid.Panel',
         'Ext.grid.column.Action',
         'Ext.grid.View',
-        'Ext.form.field.Display'
+        'Ext.form.field.Display',
+        'SdnMgr.view.AppFixPackList'
     ],
     
     xtype: 'customer.detail',
@@ -101,28 +102,42 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                     ]
                 },
                 {
-                    xtype: 'panel',
+                    xtype: 'tabpanel',
                     region: 'center',
-                    itemId: 'customerDetailView',
-                    layout: 'fit',
                     items: [{
-                    	xtype: 'container',
-                    	layout: {
-                    		type: 'hbox',
-                    		align: 'stretch'
-                    	},
-                    	items: [{
-                    		xtype: 'appinstance.view',
-                    		margin: 5,
-                    		flex: 1
-                    	}, {
-                    		xtype: 'appinstance.detail',
-                    		margin: 5,
-                    		flex: 1
+	                    itemId: 'customerDetailView',
+	                    title: 'Customer Details',
+	                    layout: 'fit',
+	                    items: [{
+	                    	xtype: 'container',
+	                    	layout: {
+	                    		type: 'hbox',
+	                    		align: 'stretch'
+	                    	},
+	                    	items: [{
+	                    		xtype: 'appinstance.view',
+	                    		margin: 5,
+	                    		flex: 1
+	                    	}, {
+	                    		xtype: 'appinstance.detail',
+	                    		margin: 5,
+	                    		flex: 1
+	                    	}
+	                    	]
+	                    }]
+                    }, {
+                    	title: 'Fix Packs List',
+                    	xtype: 'appfixpacks',
+                    	listeners: {
+                    		activate: function(pnl) {
+                    			var store = Ext.getStore('AppFixPacks');
+                    	    	var url = 'api/sdn/listSdnsForCustomer';
+                    	    	url = url + "/" + pnl.custRecord.get('id');
+                    	    	store.getProxy().setUrl(url);
+                    	    	store.load();
+                    		}
                     	}
-                    	]
-                    }]
-                            
+                    }]                            
                 }
             ]
         });
