@@ -12,13 +12,13 @@ Ext.define('SdnMgr.store.FixPacks', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             model: 'SdnMgr.model.FixPack',
-            storeId: 'DBColumns',
+            storeId: 'FixPacks',
             proxy: {
                 type: 'rest',
                 url: '',
                 reader: {
                     type: 'json',
-                    root: 'data.items'
+                    rootProperty: ''
                 }
             }
         }, cfg)]);

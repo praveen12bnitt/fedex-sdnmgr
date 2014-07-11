@@ -15,8 +15,7 @@ Ext.define('SdnMgr.model.FixPack', {
             type: 'boolean'
         },
         {
-            name: 'publishedDate',
-            type: 'string'
+            name: 'publishDate'
         }
     ]
 });

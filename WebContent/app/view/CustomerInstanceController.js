@@ -35,19 +35,17 @@ Ext.define('SdnMgr.view.CustomerInstanceController', {
         filterButton.setActiveItem(activeState);
         viewModel.set('category', activeState);
 
-        this.fireEvent('changeroute', this, 'customerinstance/' + activeState);
+        //this.fireEvent('changeroute', this, 'customerinstance/' + activeState);
     },
 
-    //-------------------------------------------------------------------------
-    // RowExpander management
 
     onClick: function(dv, record, item, index, e) {
-        if (e.getTarget('.news-toggle')) {
-            var grid = this.getView(),
-                plugin = grid.getPlugin('rowexpander');
-
-            plugin.toggleRow(index, record);
-        }
+    	var store = Ext.getStore('FixPacks');
+    	var url = 'api/sdn/listSDNsForCustAppInst';
+    	url = url + "/" + record.get('custId') + "/" + record.get('name');    	
+    	store.getProxy().setUrl(url);
+    	store.load();    	
+    	
     },
 
     onExpandBody: function (rowNode) {   // , record, expandRow, eOpts

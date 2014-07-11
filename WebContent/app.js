@@ -23,10 +23,12 @@ Ext.application({
         'SdnMgr.view.LoginForm'
     ],
     models: [
-        'SdnMgr.model.CustomerInstance'
+        'SdnMgr.model.CustomerInstance',
+        'SdnMgr.model.FixPack'
     ],
     stores: [
-        'SdnMgr.store.CustomerInstance'
+        'SdnMgr.store.CustomerInstance',
+        'SdnMgr.store.FixPacks'
     ],
     name: 'SdnMgr',
 

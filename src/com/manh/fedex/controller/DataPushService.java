@@ -31,6 +31,7 @@ public class DataPushService {
 		
 		
 		Contact contact1 = new Contact();
+		contact1.setPrimaryName("Palanivelrajan");
 		contact1.setPrimaryEmail("prajan@hmdp.com");
 		contact1.setSecondaryEmail("prajan1@hmdp.com");
 		contact1.setPrimaryPhone("404 509 7085");
@@ -47,6 +48,7 @@ public class DataPushService {
 		c2.setLogo("macy.jpg"); 	
 		
 		Contact contact2 = new Contact();
+		contact2.setPrimaryName("Palanivelrajan");
 		contact2.setPrimaryEmail("prajan@macys.com");
 		contact2.setSecondaryEmail("prajan1@macys.com");
 		contact2.setPrimaryPhone("404 509 7085");
