@@ -1,8 +1,8 @@
 package com.manh.fedex.sdn.domain;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "customers")
@@ -14,6 +14,8 @@ public class Customer {
 	private String logo;
 	private Contact contact;
 	private List<AppInstance> appInstances;
+	
+	@Transient
 	private boolean pendingCount;
 	
 	public String getId() {
@@ -55,14 +57,15 @@ public class Customer {
 	public boolean getPendingCount() {
 		this.pendingCount = false;
 		List<AppInstance> appInsts = this.getAppInstances();
-		for (Iterator<AppInstance> iterator = appInsts.iterator(); iterator.hasNext();) {
-			AppInstance appInstance = (AppInstance) iterator.next();
-			
-			if(appInstance.getPendingSdns() != null && appInstance.getPendingSdns().size() > 0) {
-				this.pendingCount = true;
-			}
-		}
 		
+		if(appInsts != null) {
+			for(AppInstance apps : appInsts) {
+				if(apps.getPendingSdns() != null && apps.getPendingSdns().size() > 0) {
+					this.pendingCount = true;
+					break;
+				}
+			}
+		}  		
 		return this.pendingCount;
 	}
 	public void setPendingCount(boolean pendingCount) {
