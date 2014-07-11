@@ -34,9 +34,9 @@ Ext.define('SdnMgr.view.CustomerAppInstanceDetail', {
     		dataIndex: 'applied',
     		renderer : function(value) {
 					if (value)
-						return 'Yes';
+						return '<span style="color:green">Yes</span>';
 					else
-						return 'No';
+						return '<span style="color:red">No</span>';
 				}
     		}, {
     			dataIndex: 'publishDate',
@@ -61,7 +61,7 @@ Ext.define('SdnMgr.view.CustomerAppInstanceDetail', {
             field: 'fixpack',
             position: 'bottom',
             boxStrokeWidth: 0,
-            labelFont: '12px Helvetica'
+            labelFont: '12px Segoe UI'
         },
         series: [{
             type: 'pie',
