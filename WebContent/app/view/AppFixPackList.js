@@ -2,6 +2,7 @@ Ext.define('SdnMgr.view.AppFixPackList',{
 	extend: 'Ext.grid.Panel',
 	title: 'All Fix Packs',
 	xtype: 'appfixpacks',
+	autoScroll: true,
 	plugins: [ {
 		ptype: 'rowexpander',
 		rowBodyTpl : [
