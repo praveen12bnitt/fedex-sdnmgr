@@ -50,7 +50,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                         {
                             xtype: 'container',
                             itemId: 'primary',
-                            flex: 1.2,
+                            flex: 2,
                             items: [
                                 {
                                     xtype: 'image',
@@ -74,7 +74,8 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                                 },
                                 tdAttrs: {
                                     style: {
-                                        width: '50%'
+                                        width: '50%',
+                                        padding: '0px 5px'
                                     }
                                 }
                                 
@@ -83,13 +84,13 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                                     xtype: 'displayfield',
                                     fieldLabel: 'NAME',
                                     itemId: 'primaryName',
-                                    labelWidth: 250,
+                                    labelWidth: 200,
                                     labelCls: 'customer-contact-info',
                                     fieldCls: 'customer-contact-info'
                                 },
                                 {
                                     xtype: 'displayfield',
-                                    labelWidth: 250,
+                                    labelWidth: 200,
                                     fieldLabel: 'NUMBER',
                                     itemId: 'primaryPhone',
                                     labelCls: 'customer-contact-info',
@@ -97,7 +98,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                                 },
                                 {
                                     xtype: 'displayfield',
-                                    labelWidth: 250,
+                                    labelWidth: 200,
                                     fieldLabel: 'EMAIL ADDRESS',
                                     itemId: 'primaryEmail',
                                     labelCls: 'customer-contact-info',
@@ -105,7 +106,7 @@ Ext.define('SdnMgr.view.CustomerDetail', {
                                 }, 
                                 {
                                     xtype: 'displayfield',
-                                    labelWidth: 250,
+                                    labelWidth: 200,
                                     fieldLabel: 'MODE',
                                     itemId: 'preferredContactMode',
                                     labelCls: 'customer-contact-info',
